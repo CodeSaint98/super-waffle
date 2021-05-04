@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "updatePendingRewards",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/dependencies/ComptrollerInterface.sol": "IVAIVault"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/ComptrollerInterface.sol": {
+			"keccak256": "0x253f410800ebe5d7adbd2a1b619326d6529095ecdde0664c1a57f0b6fdc1f7c5",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://be5628197a5ee208688e72209bd82858e7d5ad0f719994c90b15e30df57e9346",
+				"dweb:/ipfs/QmRjBwJMCG3r6oFxJP9tDW7FuCiF46Wg3fJF9CXxhCzcEh"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,1556 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "cashPrior",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "interestAccumulated",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "borrowIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalBorrows",
+						"type": "uint256"
+					}
+				],
+				"name": "AccrueInterest",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "borrowAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "accountBorrows",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalBorrows",
+						"type": "uint256"
+					}
+				],
+				"name": "Borrow",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "error",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "info",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "detail",
+						"type": "uint256"
+					}
+				],
+				"name": "Failure",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "liquidator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "repayAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "vTokenCollateral",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "seizeTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "LiquidateBorrow",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "minter",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "mintAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "mintTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "Mint",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldAdmin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "NewAdmin",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract ComptrollerInterface",
+						"name": "oldComptroller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract ComptrollerInterface",
+						"name": "newComptroller",
+						"type": "address"
+					}
+				],
+				"name": "NewComptroller",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract InterestRateModel",
+						"name": "oldInterestRateModel",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract InterestRateModel",
+						"name": "newInterestRateModel",
+						"type": "address"
+					}
+				],
+				"name": "NewMarketInterestRateModel",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldPendingAdmin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newPendingAdmin",
+						"type": "address"
+					}
+				],
+				"name": "NewPendingAdmin",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldReserveFactorMantissa",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newReserveFactorMantissa",
+						"type": "uint256"
+					}
+				],
+				"name": "NewReserveFactor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "redeemer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "redeemAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "redeemTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "Redeem",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "redeemer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "feeAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "redeemTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "RedeemFee",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "payer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "repayAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "accountBorrows",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalBorrows",
+						"type": "uint256"
+					}
+				],
+				"name": "RepayBorrow",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "benefactor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "addAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTotalReserves",
+						"type": "uint256"
+					}
+				],
+				"name": "ReservesAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "admin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "reduceAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTotalReserves",
+						"type": "uint256"
+					}
+				],
+				"name": "ReservesReduced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_acceptAdmin",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "reduceAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "_reduceReserves",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract ComptrollerInterface",
+						"name": "newComptroller",
+						"type": "address"
+					}
+				],
+				"name": "_setComptroller",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract InterestRateModel",
+						"name": "newInterestRateModel",
+						"type": "address"
+					}
+				],
+				"name": "_setInterestRateModel",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "newPendingAdmin",
+						"type": "address"
+					}
+				],
+				"name": "_setPendingAdmin",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newReserveFactorMantissa",
+						"type": "uint256"
+					}
+				],
+				"name": "_setReserveFactor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "accrualBlockNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "accrueInterest",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOfUnderlying",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "borrowBalanceCurrent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "borrowBalanceStored",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "borrowIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "borrowRatePerBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "comptroller",
+				"outputs": [
+					{
+						"internalType": "contract ComptrollerInterface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "exchangeRateCurrent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "exchangeRateStored",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "getAccountSnapshot",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCash",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract ComptrollerInterface",
+						"name": "comptroller_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract InterestRateModel",
+						"name": "interestRateModel_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "initialExchangeRateMantissa_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name_",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol_",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "decimals_",
+						"type": "uint8"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "interestRateModel",
+				"outputs": [
+					{
+						"internalType": "contract InterestRateModel",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isVToken",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pendingAdmin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "reserveFactorMantissa",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "liquidator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "seizeTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "seize",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "supplyRatePerBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalBorrows",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalBorrowsCurrent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalReserves",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "dst",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "src",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "dst",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Venus",
+			"kind": "dev",
+			"methods": {
+				"_acceptAdmin()": {
+					"details": "Admin function for pending admin to accept role and update admin",
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"_reduceReserves(uint256)": {
+					"params": {
+						"reduceAmount": "Amount of reduction to reserves"
+					},
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"_setComptroller(address)": {
+					"details": "Admin function to set a new comptroller",
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"_setInterestRateModel(address)": {
+					"details": "Admin function to accrue interest and update the interest rate model",
+					"params": {
+						"newInterestRateModel": "the new interest rate model to use"
+					},
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"_setPendingAdmin(address)": {
+					"details": "Admin function to begin change of admin. The newPendingAdmin must call `_acceptAdmin` to finalize the transfer.",
+					"params": {
+						"newPendingAdmin": "New pending admin."
+					},
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"_setReserveFactor(uint256)": {
+					"details": "Admin function to accrue interest and set a new reserve factor",
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"accrueInterest()": {
+					"details": "This calculates interest accrued from the last checkpointed block   up to the current block and writes new checkpoint to storage."
+				},
+				"allowance(address,address)": {
+					"params": {
+						"owner": "The address of the account which owns the tokens to be spent",
+						"spender": "The address of the account which may transfer tokens"
+					},
+					"returns": {
+						"_0": "The number of tokens allowed to be spent (-1 means infinite)"
+					}
+				},
+				"approve(address,uint256)": {
+					"details": "This will overwrite the approval amount for `spender`  and is subject to issues noted [here](https://eips.ethereum.org/EIPS/eip-20#approve)",
+					"params": {
+						"amount": "The number of tokens that are approved (-1 means infinite)",
+						"spender": "The address of the account which may transfer tokens"
+					},
+					"returns": {
+						"_0": "Whether or not the approval succeeded"
+					}
+				},
+				"balanceOf(address)": {
+					"params": {
+						"owner": "The address of the account to query"
+					},
+					"returns": {
+						"_0": "The number of tokens owned by `owner`"
+					}
+				},
+				"balanceOfUnderlying(address)": {
+					"details": "This also accrues interest in a transaction",
+					"params": {
+						"owner": "The address of the account to query"
+					},
+					"returns": {
+						"_0": "The amount of underlying owned by `owner`"
+					}
+				},
+				"borrowBalanceCurrent(address)": {
+					"params": {
+						"account": "The address whose balance should be calculated after updating borrowIndex"
+					},
+					"returns": {
+						"_0": "The calculated balance"
+					}
+				},
+				"borrowBalanceStored(address)": {
+					"params": {
+						"account": "The address whose balance should be calculated"
+					},
+					"returns": {
+						"_0": "The calculated balance"
+					}
+				},
+				"borrowRatePerBlock()": {
+					"returns": {
+						"_0": "The borrow interest rate per block, scaled by 1e18"
+					}
+				},
+				"exchangeRateCurrent()": {
+					"returns": {
+						"_0": "Calculated exchange rate scaled by 1e18"
+					}
+				},
+				"exchangeRateStored()": {
+					"details": "This function does not accrue interest before calculating the exchange rate",
+					"returns": {
+						"_0": "Calculated exchange rate scaled by 1e18"
+					}
+				},
+				"getAccountSnapshot(address)": {
+					"details": "This is used by comptroller to more efficiently perform liquidity checks.",
+					"params": {
+						"account": "Address of the account to snapshot"
+					},
+					"returns": {
+						"_0": "(possible error, token balance, borrow balance, exchange rate mantissa)"
+					}
+				},
+				"getCash()": {
+					"returns": {
+						"_0": "The quantity of underlying asset owned by this contract"
+					}
+				},
+				"initialize(address,address,uint256,string,string,uint8)": {
+					"params": {
+						"comptroller_": "The address of the Comptroller",
+						"decimals_": "EIP-20 decimal precision of this token",
+						"initialExchangeRateMantissa_": "The initial exchange rate, scaled by 1e18",
+						"interestRateModel_": "The address of the interest rate model",
+						"name_": "EIP-20 name of this token",
+						"symbol_": "EIP-20 symbol of this token"
+					}
+				},
+				"seize(address,address,uint256)": {
+					"details": "Will fail unless called by another vToken during the process of liquidation.  Its absolutely critical to use msg.sender as the borrowed vToken and not a parameter.",
+					"params": {
+						"borrower": "The account having collateral seized",
+						"liquidator": "The account receiving seized collateral",
+						"seizeTokens": "The number of vTokens to seize"
+					},
+					"returns": {
+						"_0": "uint 0=success, otherwise a failure (see ErrorReporter.sol for details)"
+					}
+				},
+				"supplyRatePerBlock()": {
+					"returns": {
+						"_0": "The supply interest rate per block, scaled by 1e18"
+					}
+				},
+				"totalBorrowsCurrent()": {
+					"returns": {
+						"_0": "The total borrows with interest"
+					}
+				},
+				"transfer(address,uint256)": {
+					"params": {
+						"amount": "The number of tokens to transfer",
+						"dst": "The address of the destination account"
+					},
+					"returns": {
+						"_0": "Whether or not the transfer succeeded"
+					}
+				},
+				"transferFrom(address,address,uint256)": {
+					"params": {
+						"amount": "The number of tokens to transfer",
+						"dst": "The address of the destination account",
+						"src": "The address of the source account"
+					},
+					"returns": {
+						"_0": "Whether or not the transfer succeeded"
+					}
+				}
+			},
+			"title": "Venus's VToken Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"AccrueInterest(uint256,uint256,uint256,uint256)": {
+					"notice": "Event emitted when interest is accrued"
+				},
+				"Approval(address,address,uint256)": {
+					"notice": "EIP20 Approval event"
+				},
+				"Borrow(address,uint256,uint256,uint256)": {
+					"notice": "Event emitted when underlying is borrowed"
+				},
+				"LiquidateBorrow(address,address,uint256,address,uint256)": {
+					"notice": "Event emitted when a borrow is liquidated"
+				},
+				"Mint(address,uint256,uint256)": {
+					"notice": "Event emitted when tokens are minted"
+				},
+				"NewAdmin(address,address)": {
+					"notice": "Event emitted when pendingAdmin is accepted, which means admin is updated"
+				},
+				"NewComptroller(address,address)": {
+					"notice": "Event emitted when comptroller is changed"
+				},
+				"NewMarketInterestRateModel(address,address)": {
+					"notice": "Event emitted when interestRateModel is changed"
+				},
+				"NewPendingAdmin(address,address)": {
+					"notice": "Event emitted when pendingAdmin is changed"
+				},
+				"NewReserveFactor(uint256,uint256)": {
+					"notice": "Event emitted when the reserve factor is changed"
+				},
+				"Redeem(address,uint256,uint256)": {
+					"notice": "Event emitted when tokens are redeemed"
+				},
+				"RedeemFee(address,uint256,uint256)": {
+					"notice": "Event emitted when tokens are redeemed and fee are transferred"
+				},
+				"RepayBorrow(address,address,uint256,uint256,uint256)": {
+					"notice": "Event emitted when a borrow is repaid"
+				},
+				"ReservesAdded(address,uint256,uint256)": {
+					"notice": "Event emitted when the reserves are added"
+				},
+				"ReservesReduced(address,uint256,uint256)": {
+					"notice": "Event emitted when the reserves are reduced"
+				},
+				"Transfer(address,address,uint256)": {
+					"notice": "EIP20 Transfer event"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"_acceptAdmin()": {
+					"notice": "Accepts transfer of admin rights. msg.sender must be pendingAdmin"
+				},
+				"_reduceReserves(uint256)": {
+					"notice": "Accrues interest and reduces reserves by transferring to admin"
+				},
+				"_setComptroller(address)": {
+					"notice": "Sets a new comptroller for the market"
+				},
+				"_setInterestRateModel(address)": {
+					"notice": "accrues interest and updates the interest rate model using _setInterestRateModelFresh"
+				},
+				"_setPendingAdmin(address)": {
+					"notice": "Begins transfer of admin rights. The newPendingAdmin must call `_acceptAdmin` to finalize the transfer."
+				},
+				"_setReserveFactor(uint256)": {
+					"notice": "accrues interest and sets a new reserve factor for the protocol using _setReserveFactorFresh"
+				},
+				"accrualBlockNumber()": {
+					"notice": "Block number that interest was last accrued at"
+				},
+				"accrueInterest()": {
+					"notice": "Applies accrued interest to total borrows and reserves"
+				},
+				"admin()": {
+					"notice": "Administrator for this contract"
+				},
+				"allowance(address,address)": {
+					"notice": "Get the current allowance from `owner` for `spender`"
+				},
+				"approve(address,uint256)": {
+					"notice": "Approve `spender` to transfer up to `amount` from `src`"
+				},
+				"balanceOf(address)": {
+					"notice": "Get the token balance of the `owner`"
+				},
+				"balanceOfUnderlying(address)": {
+					"notice": "Get the underlying balance of the `owner`"
+				},
+				"borrowBalanceCurrent(address)": {
+					"notice": "Accrue interest to updated borrowIndex and then calculate account's borrow balance using the updated borrowIndex"
+				},
+				"borrowBalanceStored(address)": {
+					"notice": "Return the borrow balance of account based on stored data"
+				},
+				"borrowIndex()": {
+					"notice": "Accumulator of the total earned interest rate since the opening of the market"
+				},
+				"borrowRatePerBlock()": {
+					"notice": "Returns the current per-block borrow interest rate for this vToken"
+				},
+				"comptroller()": {
+					"notice": "Contract which oversees inter-vToken operations"
+				},
+				"decimals()": {
+					"notice": "EIP-20 token decimals for this token"
+				},
+				"exchangeRateCurrent()": {
+					"notice": "Accrue interest then return the up-to-date exchange rate"
+				},
+				"exchangeRateStored()": {
+					"notice": "Calculates the exchange rate from the underlying to the VToken"
+				},
+				"getAccountSnapshot(address)": {
+					"notice": "Get a snapshot of the account's balances, and the cached exchange rate"
+				},
+				"getCash()": {
+					"notice": "Get cash balance of this vToken in the underlying asset"
+				},
+				"initialize(address,address,uint256,string,string,uint8)": {
+					"notice": "Initialize the money market"
+				},
+				"interestRateModel()": {
+					"notice": "Model which tells what the current interest rate should be"
+				},
+				"isVToken()": {
+					"notice": "Indicator that this is a VToken contract (for inspection)"
+				},
+				"name()": {
+					"notice": "EIP-20 token name for this token"
+				},
+				"pendingAdmin()": {
+					"notice": "Pending administrator for this contract"
+				},
+				"reserveFactorMantissa()": {
+					"notice": "Fraction of interest currently set aside for reserves"
+				},
+				"seize(address,address,uint256)": {
+					"notice": "Transfers collateral tokens (this market) to the liquidator."
+				},
+				"supplyRatePerBlock()": {
+					"notice": "Returns the current per-block supply interest rate for this vToken"
+				},
+				"symbol()": {
+					"notice": "EIP-20 token symbol for this token"
+				},
+				"totalBorrows()": {
+					"notice": "Total amount of outstanding borrows of the underlying in this market"
+				},
+				"totalBorrowsCurrent()": {
+					"notice": "Returns the current total borrows plus accrued interest"
+				},
+				"totalReserves()": {
+					"notice": "Total amount of reserves of the underlying held in this market"
+				},
+				"totalSupply()": {
+					"notice": "Total number of tokens in circulation"
+				},
+				"transfer(address,uint256)": {
+					"notice": "Transfer `amount` tokens from `msg.sender` to `dst`"
+				},
+				"transferFrom(address,address,uint256)": {
+					"notice": "Transfer `amount` tokens from `src` to `dst`"
+				}
+			},
+			"notice": "Abstract base for VTokens",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/dependencies/VToken.sol": "VToken"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/CarefulMath.sol": {
+			"keccak256": "0xc265f791cdd3dfa9a2ff1a3a271f9ebe8981121013106a69955b24cf44d6a462",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://039b7acaca7cb93346e4e9fa080f0eb56d59517f73e2825168bcf31aa64abc3b",
+				"dweb:/ipfs/QmRXTR3y96iUaUx2qeye33XjLwqsz5xZASsPH6wGpD6ir2"
+			]
+		},
+		"contracts/dependencies/ComptrollerInterface.sol": {
+			"keccak256": "0x253f410800ebe5d7adbd2a1b619326d6529095ecdde0664c1a57f0b6fdc1f7c5",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://be5628197a5ee208688e72209bd82858e7d5ad0f719994c90b15e30df57e9346",
+				"dweb:/ipfs/QmRjBwJMCG3r6oFxJP9tDW7FuCiF46Wg3fJF9CXxhCzcEh"
+			]
+		},
+		"contracts/dependencies/EIP20Interface.sol": {
+			"keccak256": "0x86526f4ec6a080363f94d51344f2e7b6263328897c744625651dabd7b3e05089",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://5d4b5c9ee4845b315bcd2cffc0f16ff054ce22549aed41c25801aea288e17c31",
+				"dweb:/ipfs/QmcXxrNHDxJGTpGuEFRSKgyxFyNV2uE5qYJtFuA93gEUYX"
+			]
+		},
+		"contracts/dependencies/EIP20NonStandardInterface.sol": {
+			"keccak256": "0xad14bad26bbb9e8ebf9c0d213828e3ec38de76cdb0104247bd765338d7a59b4d",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://969885009c10b52576e4471029d7f8f1268744a2226acdc84e343aa29b4a251c",
+				"dweb:/ipfs/QmXibPzm4PL19wKTUte1dT4ii2H9C6LgvCNPW5WUSXdEWA"
+			]
+		},
+		"contracts/dependencies/ErrorReporter.sol": {
+			"keccak256": "0x6d7c78efc447358bf0cf66b8040ce5f509fb797af226a3c258212f3f827e7378",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://49eb2ff57d596705ee09740857ec65ac52b7747fa36a8f51335109a71c2c83fd",
+				"dweb:/ipfs/Qmb7GrRGdc47rgU3G6uA1gCpWMBMcWk1FaTguFEvkyGQy9"
+			]
+		},
+		"contracts/dependencies/Exponential.sol": {
+			"keccak256": "0x72c39610365031febd33f23b20866f04a31ec1e3bbb5be7e16d737ec3c2e1526",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://3291da4f12e0bd77e4eb9c71cbf48eb7c1c2a52a45c037891269a63eaeb43b88",
+				"dweb:/ipfs/QmQFQYZKQrxUnCjS22AGv1TDbhqi2ApGZnCjcDukcULAiU"
+			]
+		},
+		"contracts/dependencies/ExponentialNoError.sol": {
+			"keccak256": "0xffca77896f0cc2ae8d5c9822ae5b394788f3051d3d2eddc60b905f8a226f27c1",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://d91f1733aeb96660b35af25ed1ce727732197c5e1dcca42e472bbea3066c97d5",
+				"dweb:/ipfs/QmaV3K5pyKvHEQFNxppiAGb8DDtBUkS9UowUxJyvCkvjzF"
+			]
+		},
+		"contracts/dependencies/InterestRateModel.sol": {
+			"keccak256": "0xf928cf4a897041b29fded825809dafec4c287b53980c80ba483f76864530c60d",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://6532e5d05ca77c80645d3427c3a9a14182f60bedd0adb588e599dd1a3c75cb35",
+				"dweb:/ipfs/QmbkRKTdCA13zDDhCcjs7wy91AVSmLi4id2fYRzKMebVGi"
+			]
+		},
+		"contracts/dependencies/VToken.sol": {
+			"keccak256": "0x2c94792f75084835a826755a32e6d4c33e9390d214e2afdff7eac07387d6425d",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://8886fb0b3d5599f5f9ac396f636c03626ac2d81bf3d8267860235260ceccf63e",
+				"dweb:/ipfs/QmNh3tW6ifpmihh9ScYPx2hK5CUY2rFt9otfhtiaGEsLWC"
+			]
+		},
+		"contracts/dependencies/VTokenInterfaces.sol": {
+			"keccak256": "0x206083015d0ab27445e8165e0ef1950ea17bb9165449fbb3056eabd6b599a9dd",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://c0252642cd9d9cd9a7052e3e17949c915ae3ce10f8e2d66f82b75ea1fdb24e45",
+				"dweb:/ipfs/QmWibNSRRF88248uaMRENS7Rc3DPEXrr4K4ZDkp7AeCNwH"
+			]
+		}
+	},
+	"version": 1
+}

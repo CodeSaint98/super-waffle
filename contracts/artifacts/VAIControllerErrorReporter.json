@@ -1,0 +1,85 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220767ef2ce9f51f54a514e38dc4eb01828bc494915299391677b98d0b07e3c5f7f64736f6c63430006020033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x3F DUP1 PUSH1 0x1D PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH23 0x7EF2CE9F51F54A514E38DC4EB01828BC49491529939167 PUSH28 0x98D0B07E3C5F7F64736F6C6343000602003300000000000000000000 ",
+			"sourceMap": "8151:2218:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;8151:2218:0;;;;;;;"
+		},
+		"deployedBytecode": {
+			"linkReferences": {},
+			"object": "6080604052600080fdfea2646970667358221220767ef2ce9f51f54a514e38dc4eb01828bc494915299391677b98d0b07e3c5f7f64736f6c63430006020033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH23 0x7EF2CE9F51F54A514E38DC4EB01828BC49491529939167 PUSH28 0x98D0B07E3C5F7F64736F6C6343000602003300000000000000000000 ",
+			"sourceMap": "8151:2218:0:-:0;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "12600",
+				"executionCost": "66",
+				"totalCost": "12666"
+			},
+			"internal": {
+				"fail(enum VAIControllerErrorReporter.Error,enum VAIControllerErrorReporter.FailureInfo)": "infinite",
+				"failOpaque(enum VAIControllerErrorReporter.Error,enum VAIControllerErrorReporter.FailureInfo,uint256)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "error",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "info",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "detail",
+					"type": "uint256"
+				}
+			],
+			"name": "Failure",
+			"type": "event"
+		}
+	]
+}

@@ -1,0 +1,85 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220790e291dcb80c863686d5bf7b8db09ac476529f98c4507e4605136320a660e5464736f6c63430006020033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x3F DUP1 PUSH1 0x1D PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH26 0xE291DCB80C863686D5BF7B8DB09AC476529F98C4507E4605136 ORIGIN EXP PUSH7 0xE5464736F6C63 NUMBER STOP MOD MUL STOP CALLER ",
+			"sourceMap": "25:2459:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:2459:0;;;;;;;"
+		},
+		"deployedBytecode": {
+			"linkReferences": {},
+			"object": "6080604052600080fdfea2646970667358221220790e291dcb80c863686d5bf7b8db09ac476529f98c4507e4605136320a660e5464736f6c63430006020033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH26 0xE291DCB80C863686D5BF7B8DB09AC476529F98C4507E4605136 ORIGIN EXP PUSH7 0xE5464736F6C63 NUMBER STOP MOD MUL STOP CALLER ",
+			"sourceMap": "25:2459:0:-:0;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "12600",
+				"executionCost": "66",
+				"totalCost": "12666"
+			},
+			"internal": {
+				"fail(enum ComptrollerErrorReporter.Error,enum ComptrollerErrorReporter.FailureInfo)": "infinite",
+				"failOpaque(enum ComptrollerErrorReporter.Error,enum ComptrollerErrorReporter.FailureInfo,uint256)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "error",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "info",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "detail",
+					"type": "uint256"
+				}
+			],
+			"name": "Failure",
+			"type": "event"
+		}
+	]
+}

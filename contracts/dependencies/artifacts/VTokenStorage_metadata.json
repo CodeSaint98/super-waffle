@@ -1,0 +1,294 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "accrualBlockNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "borrowIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "comptroller",
+				"outputs": [
+					{
+						"internalType": "contract ComptrollerInterface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "interestRateModel",
+				"outputs": [
+					{
+						"internalType": "contract InterestRateModel",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pendingAdmin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "reserveFactorMantissa",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalBorrows",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalReserves",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"_notEntered": {
+					"details": "Guard variable for re-entrancy checks"
+				},
+				"accountBorrows": {
+					"details": "Mapping of account addresses to outstanding borrow balances"
+				},
+				"accountTokens": {
+					"details": "Official record of token balances for each account"
+				},
+				"borrowRateMaxMantissa": {
+					"details": "Maximum borrow rate that can ever be applied (.0005% / block)"
+				},
+				"initialExchangeRateMantissa": {
+					"details": "Initial exchange rate used when minting the first VTokens (used when totalSupply = 0)"
+				},
+				"reserveFactorMaxMantissa": {
+					"details": "Maximum fraction of interest that can be set aside for reserves"
+				},
+				"transferAllowances": {
+					"details": "Approved token transfer amounts on behalf of others"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"accrualBlockNumber()": {
+					"notice": "Block number that interest was last accrued at"
+				},
+				"admin()": {
+					"notice": "Administrator for this contract"
+				},
+				"borrowIndex()": {
+					"notice": "Accumulator of the total earned interest rate since the opening of the market"
+				},
+				"comptroller()": {
+					"notice": "Contract which oversees inter-vToken operations"
+				},
+				"decimals()": {
+					"notice": "EIP-20 token decimals for this token"
+				},
+				"interestRateModel()": {
+					"notice": "Model which tells what the current interest rate should be"
+				},
+				"name()": {
+					"notice": "EIP-20 token name for this token"
+				},
+				"pendingAdmin()": {
+					"notice": "Pending administrator for this contract"
+				},
+				"reserveFactorMantissa()": {
+					"notice": "Fraction of interest currently set aside for reserves"
+				},
+				"symbol()": {
+					"notice": "EIP-20 token symbol for this token"
+				},
+				"totalBorrows()": {
+					"notice": "Total amount of outstanding borrows of the underlying in this market"
+				},
+				"totalReserves()": {
+					"notice": "Total amount of reserves of the underlying held in this market"
+				},
+				"totalSupply()": {
+					"notice": "Total number of tokens in circulation"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/dependencies/VTokenInterfaces.sol": "VTokenStorage"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/ComptrollerInterface.sol": {
+			"keccak256": "0x253f410800ebe5d7adbd2a1b619326d6529095ecdde0664c1a57f0b6fdc1f7c5",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://be5628197a5ee208688e72209bd82858e7d5ad0f719994c90b15e30df57e9346",
+				"dweb:/ipfs/QmRjBwJMCG3r6oFxJP9tDW7FuCiF46Wg3fJF9CXxhCzcEh"
+			]
+		},
+		"contracts/dependencies/InterestRateModel.sol": {
+			"keccak256": "0xf928cf4a897041b29fded825809dafec4c287b53980c80ba483f76864530c60d",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://6532e5d05ca77c80645d3427c3a9a14182f60bedd0adb588e599dd1a3c75cb35",
+				"dweb:/ipfs/QmbkRKTdCA13zDDhCcjs7wy91AVSmLi4id2fYRzKMebVGi"
+			]
+		},
+		"contracts/dependencies/VTokenInterfaces.sol": {
+			"keccak256": "0x206083015d0ab27445e8165e0ef1950ea17bb9165449fbb3056eabd6b599a9dd",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://c0252642cd9d9cd9a7052e3e17949c915ae3ce10f8e2d66f82b75ea1fdb24e45",
+				"dweb:/ipfs/QmWibNSRRF88248uaMRENS7Rc3DPEXrr4K4ZDkp7AeCNwH"
+			]
+		}
+	},
+	"version": 1
+}

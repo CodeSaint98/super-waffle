@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "error",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "info",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "detail",
+						"type": "uint256"
+					}
+				],
+				"name": "Failure",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Failure(uint256,uint256,uint256)": {
+					"details": "`error` corresponds to enum Error; `info` corresponds to enum FailureInfo, and `detail` is an arbitrary contract-specific code that enables us to report opaque error codes from upgradeable contracts.*"
+				}
+			},
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/dependencies/ErrorReporter.sol": "VAIControllerErrorReporter"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/ErrorReporter.sol": {
+			"keccak256": "0x6d7c78efc447358bf0cf66b8040ce5f509fb797af226a3c258212f3f827e7378",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://49eb2ff57d596705ee09740857ec65ac52b7747fa36a8f51335109a71c2c83fd",
+				"dweb:/ipfs/Qmb7GrRGdc47rgU3G6uA1gCpWMBMcWk1FaTguFEvkyGQy9"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,68 @@
+{
+	"compiler": {
+		"version": "0.6.2+commit.bacdbe57"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "underlying",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/VTokenInterfaces.sol": "VBep20Storage"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ComptrollerInterface.sol": {
+			"keccak256": "0xc0b366252b51b83969b226bb05f77b98e32fde8b26337b6e7d4b04e10f71f487",
+			"urls": [
+				"bzz-raw://f50521c0d99f32480f7a7fa06481a283386d3406d782365bec6d31bfc1551666",
+				"dweb:/ipfs/QmWzDYgzcErRvK5zyeHGigPBAJEzfG7T8qiib9K5csNW1F"
+			]
+		},
+		"contracts/InterestRateModel.sol": {
+			"keccak256": "0xff3bf20f59f13d538efe32ec7e3440eb470e9bc81abf03f7970ee8ab80bbc252",
+			"urls": [
+				"bzz-raw://a4c92b0ef8059198256e06e8614a77e5dc8834caff3409fedbd2d4891848410b",
+				"dweb:/ipfs/QmZ2Ti6wRpy5TnGr4YuVuVbwNWWq5u3SZeMHeQQPERJXr2"
+			]
+		},
+		"contracts/VTokenInterfaces.sol": {
+			"keccak256": "0x3380888f7b2efb7045f3677eb5e32127d84434538b726169bc18e80c93245712",
+			"urls": [
+				"bzz-raw://088dc2a0c7205681d05057c739954d14ff0c602d48a9cf8adc8b12b2b6a07297",
+				"dweb:/ipfs/Qma47ifJeJofyxRao7aA3E4VMDmczz1uD1ywBeMFdR2cJU"
+			]
+		}
+	},
+	"version": 1
+}

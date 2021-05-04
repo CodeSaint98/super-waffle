@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.6.2+commit.bacdbe57"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "error",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "info",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "detail",
+						"type": "uint256"
+					}
+				],
+				"name": "Failure",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ErrorReporter.sol": "TokenErrorReporter"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ErrorReporter.sol": {
+			"keccak256": "0x84562d5e8c878b41aaec8e41e6db6177c8df496442506732def7507236620f44",
+			"urls": [
+				"bzz-raw://2d23bf4b0098cc3699f9e475b6b39dd398ffb4f7e2537ef5336706c265d5fd45",
+				"dweb:/ipfs/QmSofyy3Gfkt2XCDxSz3hPB2qkHqVgTZmZH2atL2t2QMw3"
+			]
+		}
+	},
+	"version": 1
+}

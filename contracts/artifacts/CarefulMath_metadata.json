@@ -1,0 +1,43 @@
+{
+	"compiler": {
+		"version": "0.6.2+commit.bacdbe57"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"author": "Venus",
+			"methods": {},
+			"title": "Careful Math"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Derived from OpenZeppelin's SafeMath library        https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CarefulMath.sol": "CarefulMath"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/CarefulMath.sol": {
+			"keccak256": "0xef0cccb0e69339731d69b83db3e6c865154520a7cff8afd9b36dcd7063190236",
+			"urls": [
+				"bzz-raw://77285c025e00eabbaa00d2c34412c96cf5d877ea56462ba2038a9e3f87b7c07a",
+				"dweb:/ipfs/QmPdFsEsbhj4nuqdGJF4pAsLuwFa7vmcEQc3oKkx8CrwoG"
+			]
+		}
+	},
+	"version": 1
+}

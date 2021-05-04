@@ -1,0 +1,79 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "underlying",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"underlying()": {
+					"notice": "Underlying asset for this VToken"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/dependencies/VTokenInterfaces.sol": "VBep20Storage"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/dependencies/ComptrollerInterface.sol": {
+			"keccak256": "0x253f410800ebe5d7adbd2a1b619326d6529095ecdde0664c1a57f0b6fdc1f7c5",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://be5628197a5ee208688e72209bd82858e7d5ad0f719994c90b15e30df57e9346",
+				"dweb:/ipfs/QmRjBwJMCG3r6oFxJP9tDW7FuCiF46Wg3fJF9CXxhCzcEh"
+			]
+		},
+		"contracts/dependencies/InterestRateModel.sol": {
+			"keccak256": "0xf928cf4a897041b29fded825809dafec4c287b53980c80ba483f76864530c60d",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://6532e5d05ca77c80645d3427c3a9a14182f60bedd0adb588e599dd1a3c75cb35",
+				"dweb:/ipfs/QmbkRKTdCA13zDDhCcjs7wy91AVSmLi4id2fYRzKMebVGi"
+			]
+		},
+		"contracts/dependencies/VTokenInterfaces.sol": {
+			"keccak256": "0x206083015d0ab27445e8165e0ef1950ea17bb9165449fbb3056eabd6b599a9dd",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://c0252642cd9d9cd9a7052e3e17949c915ae3ce10f8e2d66f82b75ea1fdb24e45",
+				"dweb:/ipfs/QmWibNSRRF88248uaMRENS7Rc3DPEXrr4K4ZDkp7AeCNwH"
+			]
+		}
+	},
+	"version": 1
+}
